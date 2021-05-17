@@ -9,12 +9,12 @@ import (
 
 // Client is upper level class which delegate all work to Requester
 type Client struct {
-	sender Sender
+	Sender Sender
 }
 
 // Get Method loads data from Endpoint with specified parameters
 func (c *Client) Get(endpoint string, parameters url.Values) (*http.Response, error) {
-	return c.sender.Send(request.Request{
+	return c.Sender.Send(request.Request{
 		Method:   "GET",
 		Endpoint: endpoint,
 		Values:   parameters,
@@ -23,7 +23,7 @@ func (c *Client) Get(endpoint string, parameters url.Values) (*http.Response, er
 
 // Post Method usually creates new instances
 func (c *Client) Post(endpoint string, data url.Values, body io.Reader) (*http.Response, error) {
-	return c.sender.Send(request.Request{
+	return c.Sender.Send(request.Request{
 		Method:   "POST",
 		Endpoint: endpoint,
 		Values:   data,
@@ -33,7 +33,7 @@ func (c *Client) Post(endpoint string, data url.Values, body io.Reader) (*http.R
 
 // Put Method usually update existing instances
 func (c *Client) Put(endpoint string, data url.Values, body io.Reader) (*http.Response, error) {
-	return c.sender.Send(request.Request{
+	return c.Sender.Send(request.Request{
 		Method:   "PUT",
 		Endpoint: endpoint,
 		Values:   data,
@@ -43,7 +43,7 @@ func (c *Client) Put(endpoint string, data url.Values, body io.Reader) (*http.Re
 
 // Delete Method usually removes existing instances
 func (c *Client) Delete(endpoint string, parameters url.Values) (*http.Response, error) {
-	return c.sender.Send(request.Request{
+	return c.Sender.Send(request.Request{
 		Method:   "DELETE",
 		Endpoint: endpoint,
 		Values:   parameters,
@@ -52,7 +52,7 @@ func (c *Client) Delete(endpoint string, parameters url.Values) (*http.Response,
 
 // Options Method usually using for checking possibility of POST requests
 func (c *Client) Options(endpoint string) (*http.Response, error) {
-	return c.sender.Send(request.Request{
+	return c.Sender.Send(request.Request{
 		Method:   "OPTIONS",
 		Endpoint: endpoint,
 		Values:   nil,

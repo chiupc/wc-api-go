@@ -29,7 +29,7 @@ func TestRequest(t *testing.T) {
 
 		sender := getSenderMock(request, getResponseMock(method))
 		client := Client{
-			sender: sender,
+			Sender: sender,
 		}
 
 		r, _ := executeRequest(client, &request)

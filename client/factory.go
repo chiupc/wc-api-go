@@ -22,7 +22,7 @@ func (f *Factory) NewClient(o options.Basic) Client {
 
 	sender := f.NewSender(urlBuilder, o)
 	c := Client{
-		sender: &sender,
+		Sender: &sender,
 	}
 	return c
 }
